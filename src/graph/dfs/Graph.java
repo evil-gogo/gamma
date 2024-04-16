@@ -24,6 +24,13 @@ public class Graph {
     }
 
     public void addEdge(int u, int v) {
+        this.adjacencyList[u].add(v);
+    }
 
+    public void printGraph() {
+        System.out.println("printGraph");
+        for (int i = 0; i < this.vertices; i++) {
+            System.out.println(i + " | " + adjacencyList[i]);
+        }
     }
 }

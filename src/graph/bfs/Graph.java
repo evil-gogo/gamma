@@ -5,6 +5,7 @@ import java.util.LinkedList;
 public class Graph {
     private int vertices;
     private LinkedList<Integer>[] adjacencyList;
+
     Graph(int vertices) {
         this.vertices = vertices;
         this.adjacencyList = new LinkedList[vertices];
@@ -22,11 +23,11 @@ public class Graph {
         return adjacencyList;
     }
 
-    void addEdge(int u, int v) {
+    public void addEdge(int u, int v) {
         this.adjacencyList[u].add(v);
     }
 
-    void printGraph() {
+    public void printGraph() {
         System.out.println("printGraph");
         for (int i = 0; i < this.vertices; i++) {
             System.out.println(i + " | " + adjacencyList[i]);

@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class BFS {
     public static void main(String[] args) {
-        System.out.println("!!! BFS Demo !!!");
+        System.out.println("main");
 
         Graph graph = createGraph();
         graph.printGraph();

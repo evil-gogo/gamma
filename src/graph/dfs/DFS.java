@@ -1,7 +1,5 @@
 package graph.dfs;
 
-import graph.dfs.Graph;
-
 public class DFS {
     public static void main(String[] args) {
         System.out.println("main");

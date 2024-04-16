@@ -2,6 +2,7 @@ package graph.tree;
 
 public class KthLargestElementInBST {
     static int count = 0;
+
     public static void printKthLargestElement(Node root, int k) {
         if (root == null) {
             return;
@@ -18,7 +19,7 @@ public class KthLargestElementInBST {
     }
 
     public static void main(String[] args) {
-        int input[] = { 20, 8, 22, 4, 12, 10, 14 };
+        int input[] = {20, 8, 22, 4, 12, 10, 14};
 
         Tree tree = new Tree();
         tree.root = new Node(input[0]);

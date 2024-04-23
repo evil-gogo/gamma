@@ -14,7 +14,6 @@ public class Tree {
     Node root;
 
     public void Tree() {
-        this.root = null;
     }
 
     public Node insertInBST(Node node, int data) {
@@ -30,4 +29,12 @@ public class Tree {
         }
         return node;
     }
+
+//    public Node insertInBSTMirror(Node node1, Node node2) {
+//        if (node1 == null) {
+//            return;
+//        }
+//        node2.left = node1.left;
+//
+//    }
 }

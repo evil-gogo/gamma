@@ -19,16 +19,15 @@ public class KthLargestElementInBST {
     }
 
     public static void main(String[] args) {
-        int input[] = {20, 8, 22, 4, 12, 10, 14};
+        int[] input = {20, 8, 22, 4, 12, 10, 14};
 
-        Tree tree = new Tree();
-        tree.root = new Node(input[0]);
+        Tree bst = new Tree();
 
-        for (int i = 1; i < input.length; i++) {
-            tree.insertInBST(tree.root, input[i]);
+        for (int i = 0; i < input.length; i++) {
+            bst.root = bst.insertInBST(bst.root, input[i]);
         }
 
         int k = 7;
-        printKthLargestElement(tree.root, k);
+        printKthLargestElement(bst.root, k);
     }
 }

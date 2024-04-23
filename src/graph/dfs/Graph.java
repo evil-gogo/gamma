@@ -3,8 +3,8 @@ package graph.dfs;
 import java.util.LinkedList;
 
 public class Graph {
-    private int vertices;
-    private LinkedList<Integer>[] adjacencyList;
+    private final int vertices;
+    private final LinkedList<Integer>[] adjacencyList;
 
     Graph(int vertices) {
         this.vertices = vertices;

@@ -1,0 +1,11 @@
+package graph.tree;
+
+public class TreeNode {
+    public int val;
+    public TreeNode left, right;
+
+    TreeNode(int val) {
+        this.val = val;
+        this.left = this.right = null;
+    }
+}

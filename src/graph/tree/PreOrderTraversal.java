@@ -1,11 +1,11 @@
 package graph.tree;
 
 public class PreOrderTraversal {
-    public static void preOrderTraversal(Node node) {
+    public static void preOrderTraversal(TreeNode node) {
         if (node == null)
             return;
 
-        System.out.print(node.data + " ");
+        System.out.print(node.val + " ");
 
         preOrderTraversal(node.left);
 

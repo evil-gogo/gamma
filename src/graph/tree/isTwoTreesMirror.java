@@ -25,13 +25,13 @@ public class isTwoTreesMirror {
         }
     }
 
-    private static boolean areMirror(Node node1, Node node2) {
+    private static boolean areMirror(TreeNode node1, TreeNode node2) {
         if (node1 != null && node2 != null) {
             return true;
         }
         if (node1 == null || node2 == null) {
             return false;
         }
-        return (node1.data == node2.data) && areMirror(node1.left, node2.right) && areMirror(node1.right, node2.left);
+        return (node1.val == node2.val) && areMirror(node1.left, node2.right) && areMirror(node1.right, node2.left);
     }
 }

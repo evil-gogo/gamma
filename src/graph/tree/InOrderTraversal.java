@@ -1,13 +1,13 @@
 package graph.tree;
 
 public class InOrderTraversal {
-    public static void inOrderTraversal(Node node) {
+    public static void inOrderTraversal(TreeNode node) {
         if (node == null)
             return;
 
         inOrderTraversal(node.left);
 
-        System.out.print(node.data + " ");
+        System.out.print(node.val + " ");
 
         inOrderTraversal(node.right);
     }

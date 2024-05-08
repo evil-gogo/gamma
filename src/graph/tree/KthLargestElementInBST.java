@@ -3,7 +3,7 @@ package graph.tree;
 public class KthLargestElementInBST {
     static int count = 0;
 
-    public static void printKthLargestElement(Node root, int k) {
+    public static void printKthLargestElement(TreeNode root, int k) {
         if (root == null) {
             return;
         }
@@ -12,7 +12,7 @@ public class KthLargestElementInBST {
 
         count++;
         if (count == k) {
-            System.out.println("Kth = " + k + " | Largest element in BST is : " + root.data);
+            System.out.println("Kth = " + k + " | Largest element in BST is : " + root.val);
         }
 
         printKthLargestElement(root.left, k);

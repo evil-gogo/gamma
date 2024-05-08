@@ -1,4 +1,4 @@
-package leetcode.p_1318.minimum_flips_to_make_a_or_b_equal_to_c;
+package leetcode.p_1318_minimum_flips_to_make_a_or_b_equal_to_c;
 
 //https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/description/
 

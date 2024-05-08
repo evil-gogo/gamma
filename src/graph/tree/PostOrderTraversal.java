@@ -1,7 +1,7 @@
 package graph.tree;
 
 public class PostOrderTraversal {
-    public static void preOrderTraversal(Node node) {
+    public static void preOrderTraversal(TreeNode node) {
         if (node == null)
             return;
 
@@ -9,7 +9,7 @@ public class PostOrderTraversal {
 
         preOrderTraversal(node.right);
 
-        System.out.print(node.data + " ");
+        System.out.print(node.val + " ");
     }
 
     public static void main(String[] args) {

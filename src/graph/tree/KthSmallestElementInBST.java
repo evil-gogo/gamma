@@ -5,7 +5,7 @@ public class KthSmallestElementInBST {
 
     static int count = 0;
 
-    public static void printKthSmallest(Node root, int k) {
+    public static void printKthSmallest(TreeNode root, int k) {
         if (root == null) {
             return;
         }
@@ -14,7 +14,7 @@ public class KthSmallestElementInBST {
 
         count++;
         if (count == k) {
-            System.out.println("Kth = " + k + " | Smallest element in BST is : " + root.data);
+            System.out.println("Kth = " + k + " | Smallest element in BST is : " + root.val);
         }
 
         printKthSmallest(root.right, k);

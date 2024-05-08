@@ -1,40 +1,33 @@
 package graph.tree;
 
-class Node {
-    int data;
-    Node left, right;
-
-    Node(int data) {
-        this.data = data;
-        this.left = this.right = null;
-    }
-}
-
 public class Tree {
-    Node root;
-
+    public TreeNode root;
     public void Tree() {
     }
 
-    public Node insertInBST(Node node, int data) {
+    public TreeNode insertInBST(TreeNode node, int data) {
         if (node == null) {
-            node = new Node(data);
+            node = new TreeNode(data);
             return node;
         } else {
-            if (data < node.data) {
+            if (data < node.val) {
                 node.left = insertInBST(node.left, data);
-            } else if (data > node.data) {
+            } else if (data > node.val) {
                 node.right = insertInBST(node.right, data);
             }
         }
         return node;
     }
 
-//    public Node insertInBSTMirror(Node node1, Node node2) {
-//        if (node1 == null) {
-//            return;
-//        }
-//        node2.left = node1.left;
-//
-//    }
+    public TreeNode insertInBT(TreeNode node, int[] input) {
+        node = new TreeNode(input[0]);
+        node.left = new TreeNode(input[1]);
+        node.right = new TreeNode(input[2]);
+        node.left.left = new TreeNode(input[3]);
+        node.left.right = new TreeNode(input[4]);
+        node.right.left = new TreeNode(input[5]);
+        node.right.right = new TreeNode(input[6]);
+        node.right.left.right = new TreeNode(input[7]);
+        return node;
+    }
 }

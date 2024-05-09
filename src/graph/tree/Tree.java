@@ -27,7 +27,7 @@ public class Tree {
         node.left.right = new TreeNode(input[4]);
         node.right.left = new TreeNode(input[5]);
         node.right.right = new TreeNode(input[6]);
-        node.right.left.right = new TreeNode(input[7]);
+        node.left.left.left = new TreeNode(input[7]);
         return node;
     }
 }

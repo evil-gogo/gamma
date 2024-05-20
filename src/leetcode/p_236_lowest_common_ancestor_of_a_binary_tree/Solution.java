@@ -1,4 +1,4 @@
-package leetcode.p_236._lowest_common_ancestor_of_a_binary_tree;
+package leetcode.p_236_lowest_common_ancestor_of_a_binary_tree;
 
 //https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
 

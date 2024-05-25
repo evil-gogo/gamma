@@ -1,6 +1,7 @@
 package companies.synechron.p_subarray_mean_equals_k;
 
 import java.util.HashMap;
+
 class Solution {
     public static int subarrayMean(int[] nums, int k) {
         if (nums == null || nums.length == 0) {

@@ -22,7 +22,7 @@ class Solution {
         int[] input = {4, 2, 7, 1, 3};
 
         Tree bst = new Tree();
-        for (int i = 0; i <input.length ; i++) {
+        for (int i = 0; i < input.length; i++) {
             bst.root = bst.insertInBST(bst.root, input[i]);
         }
         TreeNode node = searchBST(bst.root, 2);

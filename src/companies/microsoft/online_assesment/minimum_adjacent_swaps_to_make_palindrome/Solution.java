@@ -1,6 +1,6 @@
-package leetcode.p_2193_minimum_number_of_moves_to_make_palindrome;
+package companies.microsoft.online_assesment.minimum_adjacent_swaps_to_make_palindrome;
 
-//https://leetcode.com/problems/minimum-number-of-moves-to-make-palindrome/description/
+//https://algo.monster/liteproblems/2193
 
 class Solution {
     public static int minMovesToMakePalindrome(String s) {

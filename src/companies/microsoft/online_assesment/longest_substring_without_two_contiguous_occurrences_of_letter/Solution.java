@@ -1,4 +1,4 @@
-package companies.microsoft.longest_substring_without_two_contiguous_occurrences_of_letter;
+package companies.microsoft.online_assesment.longest_substring_without_two_contiguous_occurrences_of_letter;
 
 class Solution {
 

@@ -13,7 +13,7 @@ class Solution {
 
         int maximalNetworkRank = 0;
         for (int i = 1; i <= n; i++) {
-            maximalNetworkRank = Math.max(maximalNetworkRank, edgeCount[i - 1] + edgeCount[ends[i - 1]] - 1);
+            maximalNetworkRank = Math.max(maximalNetworkRank, edgeCount[starts[i - 1]] + edgeCount[ends[i - 1]] - 1);
         }
         return maximalNetworkRank;
     }

@@ -1,8 +1,6 @@
-package leetcode.p_238_product_of_array_except_self;
+package companies.microsoft.interview.p_238_product_of_array_except_self;
 
 //https://leetcode.com/problems/product-of-array-except-self/description/
-
-import java.util.Arrays;
 
 class Solution {
     public static int[] productExceptSelf(int[] nums) {
@@ -21,10 +19,6 @@ class Solution {
             prefix[i] = currentProduct * nums[i - 1];
             currentProduct = prefix[i];
         }
-        for (int i = 0; i < length; i++) {
-            System.out.print(prefix[i] + " ");
-        }
-        System.out.println();
 
         currentProduct = 1;
         suffix[length - 1] = 1;
@@ -33,11 +27,6 @@ class Solution {
             suffix[i] = currentProduct * nums[i + 1];
             currentProduct = suffix[i];
         }
-
-        for (int i = 0; i < length; i++) {
-            System.out.print(suffix[i] + " ");
-        }
-        System.out.println();
 
         for (int i = 0; i < length; i++) {
             nums[i] = prefix[i] * suffix[i];
@@ -55,21 +44,13 @@ class Solution {
             output[i] = currentProduct * nums[i - 1];
             currentProduct = output[i];
         }
-        for (int i = 0; i < nums.length; i++) {
-            System.out.print(output[i] + " ");
-        }
 
-        System.out.println();
         currentProduct = 1;
 
         for (int i = length - 1 - 1; i >= 0; i--) {
             currentProduct = currentProduct * nums[i + 1];
             output[i] = currentProduct * output[i];
         }
-        for (int i = 0; i < nums.length; i++) {
-            System.out.print(output[i] + " ");
-        }
-        System.out.println();
 
         return output;
     }

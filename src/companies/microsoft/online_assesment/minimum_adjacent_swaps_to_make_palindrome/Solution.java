@@ -1,6 +1,6 @@
 package companies.microsoft.online_assesment.minimum_adjacent_swaps_to_make_palindrome;
 
-//https://algo.monster/liteproblems/2193
+//https://algo.monster/problems/min_swaps_to_make_palindrome
 
 class Solution {
     public static int minMovesToMakePalindrome(String s) {

@@ -1,4 +1,4 @@
-package leetcode.p_121_best_time_to_buy_and_sell_stock_1;
+package companies.microsoft.interview.p_121_best_time_to_buy_and_sell_stock_1;
 
 //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
 

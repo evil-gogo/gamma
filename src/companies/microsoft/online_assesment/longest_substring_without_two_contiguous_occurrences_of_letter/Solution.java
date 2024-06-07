@@ -1,5 +1,7 @@
 package companies.microsoft.online_assesment.longest_substring_without_two_contiguous_occurrences_of_letter;
 
+//https://algo.monster/problems/longest_substring_without_3_contiguous_occurrences_letter
+
 class Solution {
 
     public static String longestValidString(String str) {

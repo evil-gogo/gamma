@@ -1,4 +1,4 @@
-package leetcode.p_198_house_robber;
+package companies.microsoft.interview.p_198_house_robber;
 
 //https://leetcode.com/problems/house-robber/description/
 

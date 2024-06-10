@@ -1,4 +1,4 @@
-package leetcode.P_300_longest_increasing_subsequence;
+package companies.microsoft.interview.P_300_longest_increasing_subsequence;
 
 //https://leetcode.com/problems/longest-increasing-subsequence/description/
 

@@ -24,7 +24,7 @@ class Solution {
         return maxProduct;
     }
 
-    public int maxProduct2(int[] nums) {
+    public static int maxProduct2(int[] nums) {
         int maxProduct = nums[0];
         int minProduct = nums[0];
         int answer = nums[0];

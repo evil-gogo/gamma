@@ -1,4 +1,4 @@
-package leetcode.p_91_decode_ways;
+package companies.microsoft.interview.p_91_decode_ways;
 
 //https://leetcode.com/problems/decode-ways/description/
 

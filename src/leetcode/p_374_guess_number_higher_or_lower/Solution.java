@@ -10,7 +10,7 @@ class GuessGame {
     }
 }
 
-public class Solution extends GuessGame {
+class Solution extends GuessGame {
     public static int guessNumber(int n) {
         int startIndex = 1, endIndex = n;
         while (startIndex <= endIndex) {

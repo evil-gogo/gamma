@@ -8,7 +8,6 @@ import java.util.List;
 class Solution {
     public static List<List<Integer>> generate(int numRows) {
         List<List<Integer>> triangle = new ArrayList<>();
-
         triangle.add(List.of(1));
 
         for (int currentRowIndex = 1; currentRowIndex < numRows; currentRowIndex++) {

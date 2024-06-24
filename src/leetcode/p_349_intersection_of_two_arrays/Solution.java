@@ -4,7 +4,7 @@ package leetcode.p_349_intersection_of_two_arrays;
 
 import java.util.*;
 
-public class Solution {
+class Solution {
     public static int[] intersection(int[] nums1, int[] nums2) {
         Set<Integer> union = new HashSet<>();
         Set<Integer> intersection = new HashSet<>();

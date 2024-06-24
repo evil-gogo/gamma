@@ -125,8 +125,8 @@ class Solution {
     public static void main(String[] args) {
         //String[] words = {"cba", "a", "a", "a", "a", "b", "ba", "ca"};
         //String[] words = {"back", "backdoor", "cba", "ba", "or", "door"};
-        //String[] words = {"dcba", "cba", "a", "a", "a", "a", "b", "ba", "ba", "ca", "a", "a", "a", "a", "b", "ba", "ba", "ca"};
-        String[] words = {"cba", "a", "a", "ba"};
+        String[] words = {"dcba", "cba", "a", "a", "a", "a", "b", "ba", "ba", "ca", "a", "a", "a", "a", "b", "ba", "ba", "ca"};
+        //String[] words = {"cba", "a", "a", "ba"};
         //String[] words = {"cba", "a", "a", "a", "a", "b", "ba", "ba", "ca", "a", "a", "a", "a", "b", "ba", "ba", "ca"};
         System.out.println(new Solution().solution(words));
         System.out.println();

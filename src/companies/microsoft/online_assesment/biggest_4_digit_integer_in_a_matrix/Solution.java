@@ -34,7 +34,7 @@ class Solution {
     }
 
     public void dfs(int[][] board, int r, int c, int pos, int cur) {
-        //System.out.println(r + " " + c + Arrays.toString(maxPos));
+        System.out.println(r + " " + c + Arrays.toString(maxPos));
         if (r < 0 || r >= board.length || c < 0 || c >= board[0].length || board[r][c] == -1) {
             //System.out.println(r + " " + c + " return");
             return;

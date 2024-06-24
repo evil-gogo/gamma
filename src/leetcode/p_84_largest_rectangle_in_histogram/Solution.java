@@ -2,6 +2,7 @@ package leetcode.p_84_largest_rectangle_in_histogram;
 
 //https://leetcode.com/problems/largest-rectangle-in-histogram/description/
 
+import java.util.Arrays;
 import java.util.Stack;
 
 class Solution {
@@ -41,6 +42,8 @@ class Solution {
             stack.push(i);
         }
 
+        System.out.println(Arrays.toString(prefix));
+        System.out.println(Arrays.toString(suffix));
         for (int i = 0; i < heights.length; i++) {
             largestRectangleArea = Math.max(largestRectangleArea, heights[i] * (suffix[i] - prefix[i] + 1));
         }
@@ -48,8 +51,8 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        //int[] heights = {2, 1, 5, 6, 2, 3};
-        int[] heights = {1,2,2};
+        int[] heights = {2, 1, 5, 6, 2, 3};
+        //int[] heights = {1,2,2};
         System.out.println(largestRectangleArea(heights));
     }
 }

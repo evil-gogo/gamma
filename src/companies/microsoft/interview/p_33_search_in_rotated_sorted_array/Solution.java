@@ -6,7 +6,7 @@ class Solution {
     public static int search(int[] nums, int target) {
         int leftIndex = 0, rightIndex = nums.length - 1;
         while (leftIndex < rightIndex) {
-            int midIndex =   (leftIndex + rightIndex) / 2;
+            int midIndex = leftIndex + (rightIndex - leftIndex) / 2;
             if (nums[0] <= nums[midIndex]) {
                 if (nums[leftIndex] <= target && target <= nums[midIndex]) {
                     rightIndex = midIndex;

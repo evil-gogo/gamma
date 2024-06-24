@@ -4,6 +4,7 @@ package leetcode.p_236_lowest_common_ancestor_of_a_binary_tree;
 
 import graph.tree.Tree;
 import graph.tree.TreeNode;
+
 class Solution {
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) {
@@ -19,8 +20,9 @@ class Solution {
         if (leftTreeNode != null && rightTreeNode != null) {
             return root;
         }
-        return leftTreeNode != null?leftTreeNode:rightTreeNode;
+        return leftTreeNode != null ? leftTreeNode : rightTreeNode;
     }
+
     public static void main(String[] args) {
         int[] input = {1, 2, 3, 4, 5, 6, 7, 8};
 

@@ -10,7 +10,7 @@ class Solution {
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> triplets = new ArrayList<>();
         Arrays.sort(nums);
-
+        System.out.println(Arrays.toString(nums));
         int length = nums.length;
 
         for (int first = 0; first < length - 2 && nums[first] <= 0; first++) {

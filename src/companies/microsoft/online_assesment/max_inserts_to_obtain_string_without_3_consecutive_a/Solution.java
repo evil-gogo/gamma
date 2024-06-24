@@ -2,7 +2,7 @@ package companies.microsoft.online_assesment.max_inserts_to_obtain_string_withou
 
 //https://algo.monster/problems/max_inserts_to_obtain_string_without_3_consecutive_a
 
-public class Solution {
+class Solution {
     public static int maxInserts(String s) {
         int count_A = 0, count_others = 0;
 

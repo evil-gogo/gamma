@@ -75,7 +75,7 @@ class Trie {
     }
 }
 
-public class Solution {
+class Solution {
     public static void main(String[] args) {
         String[] sequence = {"Trie", "insert", "search", "search", "startsWith", "insert", "search"};
         String[][] input = {{}, {"apple"}, {"apple"}, {"app"}, {"app"}, {"app"}, {"app"}};

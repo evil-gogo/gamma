@@ -4,7 +4,7 @@ package companies.microsoft.online_assesment.largest_k_such_that_both_k_and_minu
 
 import java.util.HashSet;
 
-public class Solution {
+class Solution {
     public static int largestK(int[] arr) {
         HashSet<Integer> set = new HashSet<>();
         int curMax = 0;

@@ -29,7 +29,7 @@ class Result {
 
 }
 
-public class Solution {
+class Solution {
     public static void main(String[] args) throws IOException {
         String api = "https://raw.githubusercontent.com/arcjsonapi/expressionDataService/main/test1";
         List<String> result = Result.evaluate(api);

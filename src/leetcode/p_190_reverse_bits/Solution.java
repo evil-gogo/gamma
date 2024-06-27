@@ -2,7 +2,7 @@ package leetcode.p_190_reverse_bits;
 
 //https://leetcode.com/problems/reverse-bits/description/
 
-public class Solution {
+class Solution {
     public static int reverseBits(int n) {
         int result = 0;
 

@@ -5,7 +5,7 @@ package companies.microsoft.interview.next_smaller_element;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class Solution {
+class Solution {
     static int[] nextSmallerElement(int[] arr) {
         Stack<Integer> stack = new Stack<>();
         for (int i = arr.length - 1; i >= 0; i--) {

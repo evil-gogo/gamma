@@ -43,7 +43,15 @@ class Solution {
         }
 
         System.out.println(Arrays.toString(prefix));
+        for (int i = 0; i < prefix.length; i++) {
+            System.out.print(heights[prefix[i]] + " ");
+        }
+        System.out.println();
         System.out.println(Arrays.toString(suffix));
+        for (int i = 0; i < prefix.length; i++) {
+            System.out.print(heights[suffix[i]] + " ");
+        }
+        System.out.println();
         for (int i = 0; i < heights.length; i++) {
             largestRectangleArea = Math.max(largestRectangleArea, heights[i] * (suffix[i] - prefix[i] + 1));
         }

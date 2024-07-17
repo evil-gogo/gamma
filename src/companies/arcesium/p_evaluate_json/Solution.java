@@ -1,4 +1,4 @@
-package companies.arcesium2;
+package companies.arcesium.p_evaluate_json;
 
 import java.io.*;
 import java.util.*;
@@ -11,7 +11,7 @@ class Result {
         StringBuilder content = new StringBuilder();
         try {
             URL url = new URL(api);
-            URLConnection urlConnection = url.openConnection(); // creating a urlconnection object
+            URLConnection urlConnection = url.openConnection();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             String line;
             while ((line = bufferedReader.readLine()) != null) {

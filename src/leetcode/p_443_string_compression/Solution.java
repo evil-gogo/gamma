@@ -12,7 +12,7 @@ class Solution {
         for (int i = 0; i < chars.length; i++) {
             indexContinuousChar = i;
             counterContinuosChar = 1;
-            while (indexContinuousChar < chars.length  - 1 && chars[indexContinuousChar] == chars[indexContinuousChar + 1]) {
+            while (indexContinuousChar < chars.length - 1 && chars[indexContinuousChar] == chars[indexContinuousChar + 1]) {
                 indexContinuousChar++;
                 counterContinuosChar++;
             }
@@ -35,7 +35,7 @@ class Solution {
     public static void main(String[] args) {
         //char[] chars = {'a', 'a', 'b', 'b', 'c', 'c', 'c'};
         //char[] chars = {'a', 'a', 'b', 'b', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'};
-        char[] chars = {'a', 'b', 'c'};
+        char[] chars = {'a', 'b', 'c' };
         System.out.println(compress(chars));
     }
 }

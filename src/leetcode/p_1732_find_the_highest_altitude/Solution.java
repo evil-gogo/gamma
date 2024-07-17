@@ -5,11 +5,11 @@ package leetcode.p_1732_find_the_highest_altitude;
 class Solution {
     public static int largestAltitude(int[] gain) {
         int maxAltitude = 0, previousAltitude = 0;
-        for (int i = 0; i < gain.length; i++) {
-            if (gain[i] + previousAltitude > maxAltitude) {
-                maxAltitude = gain[i] + previousAltitude;
+        for (int currentGain : gain) {
+            if (currentGain + previousAltitude > maxAltitude) {
+                maxAltitude = currentGain + previousAltitude;
             }
-            previousAltitude = gain[i] + previousAltitude;
+            previousAltitude = currentGain + previousAltitude;
         }
         return maxAltitude;
     }

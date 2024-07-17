@@ -1,4 +1,4 @@
-package companies.bp;
+package companies.bp.p_node_connected;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,11 +9,11 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 /**
- * The Main class implements an application that reads lines from the standard input
+ * The Solution class implements an application that reads lines from the standard input
  * and prints them to the standard output.
  */
 
-public class Main {
+public class Solution {
     /**
      * Iterate through each line of input.
      */

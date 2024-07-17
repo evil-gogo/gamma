@@ -10,7 +10,7 @@ class Solution {
         //return productExceptSelf2(nums, nums.length);
     }
 
-    public static int[] productExceptSelf1(int[] nums, int length) {
+    private static int[] productExceptSelf1(int[] nums, int length) {
         int[] prefix = new int[length];
         int[] suffix = new int[length];
 
@@ -21,10 +21,6 @@ class Solution {
             prefix[i] = currentProduct * nums[i - 1];
             currentProduct = prefix[i];
         }
-        for (int i = 0; i < length; i++) {
-            System.out.print(prefix[i] + " ");
-        }
-        System.out.println();
 
         currentProduct = 1;
         suffix[length - 1] = 1;
@@ -35,17 +31,12 @@ class Solution {
         }
 
         for (int i = 0; i < length; i++) {
-            System.out.print(suffix[i] + " ");
-        }
-        System.out.println();
-
-        for (int i = 0; i < length; i++) {
             nums[i] = prefix[i] * suffix[i];
         }
         return nums;
     }
 
-    public static int[] productExceptSelf2(int[] nums, int length) {
+    private static int[] productExceptSelf2(int[] nums, int length) {
         int[] output = new int[length];
 
         int currentProduct = 1;
@@ -55,31 +46,19 @@ class Solution {
             output[i] = currentProduct * nums[i - 1];
             currentProduct = output[i];
         }
-        for (int i = 0; i < nums.length; i++) {
-            System.out.print(output[i] + " ");
-        }
 
-        System.out.println();
         currentProduct = 1;
 
         for (int i = length - 1 - 1; i >= 0; i--) {
             currentProduct = currentProduct * nums[i + 1];
             output[i] = currentProduct * output[i];
         }
-        for (int i = 0; i < nums.length; i++) {
-            System.out.print(output[i] + " ");
-        }
-        System.out.println();
 
         return output;
     }
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4};
-        int[] output = productExceptSelf(nums);
-
-        for (int i = 0; i < nums.length; i++) {
-            System.out.print(output[i] + " ");
-        }
+        System.out.println(Arrays.toString(productExceptSelf(nums)));
     }
 }

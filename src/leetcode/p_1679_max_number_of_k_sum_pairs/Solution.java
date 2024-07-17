@@ -6,9 +6,9 @@ import java.util.Arrays;
 
 class Solution {
     public static int maxOperations(int[] nums, int k) {
-        Arrays.sort(nums);
-
         int leftIndex = 0, rightIndex = nums.length - 1, counter = 0, sum;
+
+        Arrays.sort(nums);
 
         while (leftIndex < rightIndex) {
             sum = nums[leftIndex] + nums[rightIndex];

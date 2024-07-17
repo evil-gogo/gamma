@@ -1,4 +1,4 @@
-package companies.arcesium.winner_of_election;
+package companies.arcesium.p_winner_of_election;
 
 //https://www.geeksforgeeks.org/problems/winner-of-an-election-where-votes-are-represented-as-candidate-names-1587115621/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=bottom_sticky_on_article
 
@@ -27,6 +27,7 @@ class Solution {
 
         return new String[]{(String) list.get(0).getKey(), "" + list.get(0).getValue()};
     }
+
 
     public static void main(String[] args) {
         String[] arr = {"john", "johnny", "jackie", "johnny", "john", "jackie", "jamie", "jamie", "john", "johnny", "jamie", "johnny", "john"};

@@ -6,27 +6,27 @@ class Solution {
     public static String reverseVowels(String s) {
         char[] charArray = s.toCharArray();
 
-        int indexL = 0, indexR = s.length() - 1;
+        int indexLeft = 0, indexRight = s.length() - 1;
 
         char temp;
-        while (indexL <= indexR) {
-            while (!isVowel(charArray[indexL]) && indexL < indexR) {
-                indexL++;
+        while (indexLeft <= indexRight) {
+            while (!isVowel(charArray[indexLeft]) && indexLeft < indexRight) {
+                indexLeft++;
             }
 
-            while (!isVowel(charArray[indexR]) && indexR > indexL) {
-                indexR--;
+            while (!isVowel(charArray[indexRight]) && indexRight > indexLeft) {
+                indexRight--;
             }
-            temp = charArray[indexL];
-            charArray[indexL] = charArray[indexR];
-            charArray[indexR] = temp;
-            indexL++;
-            indexR--;
+            temp = charArray[indexLeft];
+            charArray[indexLeft] = charArray[indexRight];
+            charArray[indexRight] = temp;
+            indexLeft++;
+            indexRight--;
         }
         return new String(charArray);
     }
 
-    public static boolean isVowel(char c) {
+    private static boolean isVowel(char c) {
         return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
     }
 

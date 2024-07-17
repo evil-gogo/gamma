@@ -26,8 +26,7 @@ class Solution {
         //int[] nums = {1,7,3,6,5,6};
         //int[] nums = {2,1,-1};
         //int[] nums = {1,2,3};
-        int[] nums = {-1,-1,0,1,1,0};
-
+        int[] nums = {-1, -1, 0, 1, 1, 0};
         System.out.println(pivotIndex(nums));
     }
 }

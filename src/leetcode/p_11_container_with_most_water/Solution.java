@@ -4,8 +4,8 @@ package leetcode.p_11_container_with_most_water;
 
 class Solution {
     public static int maxArea(int[] height) {
-        int leftIndex = 0;
-        int rightIndex = height.length - 1;
+        int leftIndex = 0, rightIndex = height.length - 1;
+
         int maxTrappedWater = 0;
 
         while (leftIndex < rightIndex) {

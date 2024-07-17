@@ -7,21 +7,20 @@ import java.util.Arrays;
 class Solution {
     public static boolean increasingTriplet(int[] nums) {
         int k = 3;
-        int[] arr = new int[k];
-        Arrays.fill(arr, Integer.MAX_VALUE);
+        int[] sequence = new int[k];
+        Arrays.fill(sequence, Integer.MAX_VALUE);
 
         for (int num : nums) {
             int i = 0;
-            while (num > arr[i]) {
+            while (sequence[i] < num) {
                 i++;
             }
-            arr[i] = num;
+            sequence[i] = num;
 
             if (i == k - 1) {
                 return true;
             }
         }
-        System.out.println(Arrays.toString(arr));
         return false;
     }
 

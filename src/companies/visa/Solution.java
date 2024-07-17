@@ -129,7 +129,6 @@ class Solution {
         //String[] words = {"cba", "a", "a", "ba"};
         //String[] words = {"cba", "a", "a", "a", "a", "b", "ba", "ba", "ca", "a", "a", "a", "a", "b", "ba", "ba", "ca"};
         System.out.println(new Solution().solution(words));
-        System.out.println();
     }
 }
 

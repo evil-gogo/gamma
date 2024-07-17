@@ -1,6 +1,9 @@
 package leetcode.p_283_move_zeros;
 
 //https://leetcode.com/problems/move-zeroes/description/
+
+import java.util.Arrays;
+
 class Solution {
     public static void moveZeroes(int[] nums) {
         int indexZero = 0, temp;
@@ -13,14 +16,13 @@ class Solution {
                 indexZero++;
             }
         }
-        for (int i = 0; i < nums.length; i++) {
-            System.out.print(nums[i] + " ");
-        }
     }
+
     public static void main(String[] args) {
-        int[] nums = {2, 2, 0,1,2,3,12};
+        int[] nums = {2, 2, 0, 1, 2, 3, 12};
         //int[] nums = {1};
         //int[] nums = {1, 0};
         moveZeroes(nums);
+        System.out.println(Arrays.toString(nums));
     }
 }

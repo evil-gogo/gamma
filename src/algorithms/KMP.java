@@ -1,9 +1,12 @@
 package algorithms;
 
+import java.util.Arrays;
+
 public class KMP {
     public static void KMPSearch(String text, String pattern) {
         int[] lps = computeLongestPrefixSuffixArray(pattern);
 
+        System.out.println(Arrays.toString(lps));
         int i = 0, j = 0;
         while (i < text.length() && j < pattern.length()) {
             if (text.charAt(i) == pattern.charAt(j)) {
@@ -37,7 +40,7 @@ public class KMP {
                 i++;
             } else {
                 if (index == 0) {
-                    lps[i] = 0;
+                    lps[i] = index;
                     i++;
                 } else {
                     index = lps[index - 1];
@@ -49,8 +52,8 @@ public class KMP {
 
     public static void main(String[] args) {
         String text = "ABABDABACDABABCABAB";
-        //String pattern = "ABABCABAB";
-        String pattern = "ABA";
+        String pattern = "ABABCABAB";
+        //String pattern = "ABA";
         KMPSearch(text, pattern);
     }
 }

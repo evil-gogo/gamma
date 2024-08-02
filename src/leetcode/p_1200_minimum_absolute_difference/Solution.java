@@ -26,7 +26,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        int[] arr = {3,8,-10,23,19,-4,-14,27};
+        int[] arr = {3, 8, -10, 23, 19, -4, -14, 27};
         System.out.println(minimumAbsDifference(arr));
     }
 }

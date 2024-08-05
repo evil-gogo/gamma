@@ -1,4 +1,4 @@
-package food_delivery_system;
+package companies.cleartax.food_delivery_system;
 
 import java.util.ArrayList;
 import java.util.List;

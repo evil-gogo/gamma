@@ -1,4 +1,4 @@
-package food_delivery_system;
+package companies.cleartax.food_delivery_system;
 
 public class Rating {
     User addedBy;

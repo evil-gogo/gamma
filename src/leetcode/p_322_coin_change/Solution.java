@@ -27,7 +27,6 @@ class Solution {
                     exclude = dp[i - 1][j];
                     dp[i][j] = Math.min(exclude, include);
                 }
-
             }
         }
         return dp[coins.length][amount] == Integer.MAX_VALUE ? -1 : dp[coins.length][amount];

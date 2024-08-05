@@ -1,16 +1,16 @@
 package leetcode.p_200_number_of_islands;
 
+//https://leetcode.com/problems/number-of-islands/description/
+
 class Solution {
+    static int[] directions = {-1, 0, 1, 0, -1};
+
     public static int numIslands(char[][] grid) {
-        int rowsCount = grid.length;
-        int columnCount = grid[0].length;
-
         int count = 0;
-
-        for (int i = 0; i < rowsCount; i++) {
-            for (int j = 0; j < columnCount; j++) {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] == '1') {
-                    dfs(grid, rowsCount, columnCount, i, j);
+                    solve(grid, i, j);
                     count++;
                 }
             }
@@ -18,17 +18,20 @@ class Solution {
         return count;
     }
 
-    public static void dfs(char[][] grid, int rowsCount, int columnCount, int i, int j) {
-        if (i < 0 || i >= rowsCount || j < 0 || j >= columnCount || grid[i][j] != '1') {
+    private static void solve(char[][] grid, int row, int col) {
+        if (grid[row][col] == '0') {
             return;
         }
 
-        grid[i][j] = '2';
+        for (int i = 0; i < directions.length - 1; i++) {
+            int newRow = row + directions[i];
+            int newCol = col + directions[i + 1];
 
-        dfs(grid, rowsCount, columnCount, i, j - 1);
-        dfs(grid, rowsCount, columnCount, i - 1, j);
-        dfs(grid, rowsCount, columnCount, i, j + 1);
-        dfs(grid, rowsCount, columnCount, i + 1, j);
+            if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid[0].length && grid[newRow][newCol] == '1') {
+                grid[newRow][newCol] = '2';
+                solve(grid, newRow, newCol);
+            }
+        }
     }
 
     public static void main(String[] args) {

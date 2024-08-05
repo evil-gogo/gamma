@@ -1,6 +1,4 @@
-package food_delivery_system;
-
-import java.util.List;
+package companies.cleartax.food_delivery_system;
 
 public class Restaurant {
     String restaurantName;

@@ -245,7 +245,7 @@ class Result {
                 for (int i = 0; i < split.length; i++) {
                     result = personTrie.search(split[i], searchType);
                     finalINResultList.addAll(result);
-                    //System.out.println(result);
+                    System.out.println(result);
                 }
 
                 result = finalINResultList;
@@ -265,8 +265,8 @@ class Result {
 
     public static void main(String[] args) {
         //String[] input = {"username", "EQUALS", "Garimag" };
-        String[] input ={"username", "EQUALS", "tom"};
-        //String[] input = {"address.city", "IN", "Mumbai,Kolkata" };
+        //String[] input ={"username", "EQUALS", "tom"};
+        String[] input = {"address.city", "IN", "Mumbai,Kolkata" };
 
         int size = 3;
         System.out.println(apiResponseParser(List.of(input), size));

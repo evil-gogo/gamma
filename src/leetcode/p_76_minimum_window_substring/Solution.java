@@ -5,6 +5,7 @@ package leetcode.p_76_minimum_window_substring;
 class Solution {
     public static String minWindow(String source, String target) {
         int[] charFrequencyInTarget = new int[128];
+        int[] charFrequencyInWindow = new int[128];
 
         int sourceLength = source.length(), targetLength = target.length();
 
@@ -12,35 +13,36 @@ class Solution {
             charFrequencyInTarget[target.charAt(i)]++;
         }
 
-        int windowStart = 0, minWindowStart = -1, matchCount = 0, minLength = Integer.MAX_VALUE;
+        int windowStartIndex = 0, minWindowStartIndex = -1, minWindowLength = Integer.MAX_VALUE, matchCount = 0;
 
-        for (int windowEnd = 0; windowEnd < sourceLength; windowEnd++) {
-            charFrequencyInTarget[source.charAt(windowEnd)]--;
+        for (int windowEndIndex = 0; windowEndIndex < sourceLength; windowEndIndex++) {
+            char charAtWindowEndIndex = source.charAt(windowEndIndex);
+            charFrequencyInWindow[charAtWindowEndIndex]++;
 
-            if (charFrequencyInTarget[source.charAt(windowEnd)] >= 0) {
+            if (charFrequencyInWindow[charAtWindowEndIndex] <= charFrequencyInTarget[charAtWindowEndIndex]) {
                 matchCount++;
             }
 
             while (matchCount == targetLength) {
-                int windowLength = windowEnd - windowStart + 1;
+                int windowLength = windowEndIndex - windowStartIndex + 1;
 
-                if (windowLength < minLength) {
-                    minLength = windowLength;
-                    minWindowStart = windowStart;
+                if (windowLength < minWindowLength) {
+                    minWindowLength = windowLength;
+                    minWindowStartIndex = windowStartIndex;
                 }
 
-                char charAtStart = source.charAt(windowStart);
+                char charAtWindowStartIndex = source.charAt(windowStartIndex);
 
-                if (charFrequencyInTarget[charAtStart] >= 0) {
+                if (charFrequencyInWindow[charAtWindowStartIndex] <= charFrequencyInTarget[charAtWindowStartIndex]) {
                     matchCount--;
                 }
 
-                charFrequencyInTarget[charAtStart]++;
-                windowStart++;
+                charFrequencyInWindow[charAtWindowStartIndex]--;
+                windowStartIndex++;
             }
         }
 
-        return minWindowStart < 0 ? "" : source.substring(minWindowStart, minWindowStart + minLength);
+        return minWindowStartIndex < 0 ? "" : source.substring(minWindowStartIndex, minWindowStartIndex + minWindowLength);
     }
 
     public static void main(String[] args) {

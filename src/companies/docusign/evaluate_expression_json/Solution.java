@@ -1,39 +1,18 @@
-package companies.arcesium.p_evaluate_json;
+package companies.docusign.evaluate_expression_json;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.LinkedList;
 import java.util.List;
 
 class Result {
-    public static List<String> evaluate(String api) {
+    public static List<String> evaluate(String jsonString) {
         List<String> list = new LinkedList<>();
 
-        StringBuilder jsonString = new StringBuilder();
         try {
-            URL url = new URL(api);
-            URLConnection urlConnection = url.openConnection();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                jsonString.append(line).append("\n");
-            }
-            bufferedReader.close();
-
-            System.out.println(jsonString);
-        } catch (Exception e) {
-            System.out.println("Exception while reading the content " + e.getMessage());
-        }
-        System.out.println(jsonString);
-
-        try {
-            JSONArray jsonArray = new JSONArray(jsonString.toString());
+            JSONArray jsonArray = new JSONArray(jsonString);
             if (validateJSON(jsonArray)) {
                 System.out.println("JSON is valid.");
             } else {
@@ -96,15 +75,14 @@ class Result {
                 return false;
             }
         }
-
         return true;
     }
 }
 
 class Solution {
     public static void main(String[] args) {
-        String api = "https://raw.githubusercontent.com/arcjsonapi/expressionDataService/main/test1";
-        List<String> result = Result.evaluate(api);
+        String input = "[{\"groupName\":\"Group1\",\"expressions\":[{\"name\":\"a\",\"expressionType\":\"DIRECT\",\"expression\":\"10\",\"dependencies\":[]},{\"name\":\"b\",\"expressionType\":\"RS_EXPRESSION\",\"expression\":\"${a} + 10\",\"dependencies\":[\"a\"]},{\"name\":\"c\",\"expressionType\":\"DOLLAR_EXPRESSION\",\"expression\":\"${a} + 10\",\"dependencies\":[\"a\"]}]}]";
+        List<String> result = Result.evaluate(input);
         System.out.println(result);
     }
 }

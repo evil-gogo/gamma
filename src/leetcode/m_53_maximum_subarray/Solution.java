@@ -4,16 +4,14 @@ package leetcode.m_53_maximum_subarray;
 
 class Solution {
     public static int maxSubArray(int[] nums) {
-        int maxEndingHere = 0, maxSoFar = Integer.MIN_VALUE;
-        for (int num : nums) {
-            maxEndingHere = maxEndingHere + num;
-            if (maxEndingHere < num) {
-                maxEndingHere = num;
-            }
-            if (maxSoFar < maxEndingHere) {
-                maxSoFar = maxEndingHere;
-            }
+        int maxEndingHere = nums[0];
+        int maxSoFar = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            maxEndingHere = Math.max(nums[i], maxEndingHere + nums[i]);
+            maxSoFar = Math.max(maxSoFar, maxEndingHere);
         }
+
         return maxSoFar;
     }
 

@@ -18,39 +18,30 @@ class Solution {
         return solve2(grid, 0, 0, dp);
     }
 
-    private static int solve1(int[][] grid, int i, int j) {
-        if (i == grid.length - 1 && j == grid[0].length - 1) {
-            return grid[i][j];
+    private static int solve1(int[][] grid, int rowIndex, int colIndex) {
+        if (rowIndex == grid.length - 1 && colIndex == grid[0].length - 1) {
+            return grid[rowIndex][colIndex];
         }
-        if (i == grid.length - 1) {
-            return grid[i][j] + solve1(grid, i, j + 1);
-        } else if (j == grid[0].length - 1) {
-            return grid[i][j] + solve1(grid, i + 1, j);
-        } else {
-            int down = solve1(grid, i + 1, j);
-            int right = solve1(grid, i, j + 1);
 
-            return grid[i][j] + Math.min(down, right);
-        }
+        int down = rowIndex < grid.length - 1 ? solve1(grid, rowIndex + 1, colIndex) : Integer.MAX_VALUE;
+        int right = colIndex < grid[0].length - 1 ? solve1(grid, rowIndex, colIndex + 1) : Integer.MAX_VALUE;
+
+        return grid[rowIndex][colIndex] + Math.min(down, right);
     }
 
-    private static int solve2(int[][] grid, int i, int j, int[][] dp) {
-        if (dp[i][j] != -1) {
-            return dp[i][j];
+    private static int solve2(int[][] grid, int rowIndex, int colIndex, int[][] dp) {
+        if (dp[rowIndex][colIndex] != -1) {
+            return dp[rowIndex][colIndex];
         }
-        if (i == grid.length - 1 && j == grid[0].length - 1) {
-            return dp[i][j] = grid[i][j];
-        }
-        if (i == grid.length - 1) {
-            return dp[i][j] = grid[i][j] + solve2(grid, i, j + 1, dp);
-        } else if (j == grid[0].length - 1) {
-            return dp[i][j] = grid[i][j] + solve2(grid, i + 1, j, dp);
-        } else {
-            int down = solve2(grid, i + 1, j, dp);
-            int right = solve2(grid, i, j + 1, dp);
 
-            return dp[i][j] = grid[i][j] + Math.min(down, right);
+        if (rowIndex == grid.length - 1 && colIndex == grid[0].length - 1) {
+            return dp[rowIndex][colIndex] = grid[rowIndex][colIndex];
         }
+
+        int down = rowIndex < grid.length - 1 ? solve2(grid, rowIndex + 1, colIndex, dp) : Integer.MAX_VALUE;
+        int right = colIndex < grid[0].length - 1 ? solve2(grid, rowIndex, colIndex + 1, dp) : Integer.MAX_VALUE;
+
+        return dp[rowIndex][colIndex] = grid[rowIndex][colIndex] + Math.min(down, right);
     }
 
     public static void main(String[] args) {

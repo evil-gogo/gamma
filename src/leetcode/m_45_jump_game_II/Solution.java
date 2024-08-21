@@ -13,10 +13,10 @@ class Solution {
     public static int jump1(int[] nums) {
         int steps = 0, maxReachableIndex = 0, lastJumpMaxReachableIndex = 0;
 
-        for (int i = 0; i < nums.length - 1; i++) {
-            maxReachableIndex = Math.max(maxReachableIndex, i + nums[i]);
+        for (int currentIndex = 0; currentIndex < nums.length - 1; currentIndex++) {
+            maxReachableIndex = Math.max(maxReachableIndex, currentIndex + nums[currentIndex]);
 
-            if (lastJumpMaxReachableIndex == i) {
+            if (lastJumpMaxReachableIndex == currentIndex) {
                 lastJumpMaxReachableIndex = maxReachableIndex;
                 steps++;
 

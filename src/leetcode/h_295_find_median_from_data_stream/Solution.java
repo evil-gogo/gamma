@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 class MedianFinder {
-    private PriorityQueue<Integer> minHeap;
-    private PriorityQueue<Integer> maxHeap;
+    private final PriorityQueue<Integer> minHeap;
+    private final PriorityQueue<Integer> maxHeap;
 
     public MedianFinder() {
         minHeap = new PriorityQueue<>();
@@ -51,7 +51,7 @@ class MedianFinder {
                     break;
                 case "findMedian":
                     assert medianFinder != null;
-                    medianFinder.findMedian();
+                    System.out.println(medianFinder.findMedian());
                     inputIndex++;
                     break;
             }

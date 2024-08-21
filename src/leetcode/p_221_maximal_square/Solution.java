@@ -1,4 +1,4 @@
-package leetcode.m_221_maximal_square;
+package leetcode.p_221_maximal_square;
 
 //https://leetcode.com/problems/maximal-square/description/
 

@@ -2,18 +2,69 @@ package leetcode.m_72_edit_distance;
 
 //https://leetcode.com/problems/edit-distance/description/
 
+import java.util.Arrays;
+
 class Solution {
     public static int minDistance(String word1, String word2) {
-        //return solve1(word1, word2, word1.length(), word2.length(), 0, 0);
+//        return solve1(word1, word2, 0, 0);
 
-        //int[][] dp = new int[word1.length()][word2.length()];
-        //return solve2(word1, word2, word1.length(), word2.length(), 0, 0, dp);
+//        int[][] dp = new int[word1.length() + 1][word2.length() + 1];
+//        for (int i = 0; i < dp.length; i++) {
+//            Arrays.fill(dp[i], -1);
+//
+//        }
+//        return solve2(word1, word2, 0, 0, dp);
 
         int[][] dp = new int[word1.length() + 1][word2.length() + 1];
-        return solve3(word1, word2, word1.length(), word2.length(), dp);
+        return solve3(word1, word2, dp);
     }
 
-    private static int solve3(String word1, String word2, int m, int n, int[][] dp) {
+    private static int solve1(String word1, String word2, int i, int j) {
+        if (i > word1.length() - 1) {
+            return word2.length() - j;
+        }
+        if (j > word2.length() - 1) {
+            return word1.length() - i;
+        }
+
+        if (word1.charAt(i) == word2.charAt(j)) {
+            return solve1(word1, word2, i + 1, j + 1);
+        } else {
+            int insert = 1 + solve1(word1, word2, i, j + 1);
+            int delete = 1 + solve1(word1, word2, i + 1, j);
+            int replace = 1 + solve1(word1, word2, i + 1, j + 1);
+            return Math.min(insert, Math.min(delete, replace));
+        }
+    }
+
+    private static int solve2(String word1, String word2, int i, int j, int[][] dp) {
+        if (i > word1.length() - 1) {
+            return word2.length() - j;
+        }
+        if (j > word2.length() - 1) {
+            return word1.length() - i;
+        }
+
+        if (dp[i][j] != -1) {
+            return dp[i][j];
+        }
+
+        if (word1.charAt(i) == word2.charAt(j)) {
+            dp[i][j] = solve2(word1, word2, i + 1, j + 1, dp);
+        } else {
+            int insert = 1 + solve2(word1, word2, i, j + 1, dp);
+            int delete = 1 + solve2(word1, word2, i + 1, j, dp);
+            int replace = 1 + solve2(word1, word2, i + 1, j + 1, dp);
+
+            dp[i][j] = Math.min(insert, Math.min(delete, replace));
+        }
+
+        return dp[i][j];
+    }
+
+    private static int solve3(String word1, String word2, int[][] dp) {
+        int m = word1.length(), n = word2.length();
+
         for (int i = 0; i < m + 1; i++) {
             for (int j = 0; j < n + 1; j++) {
                 if (i == 0) {
@@ -32,45 +83,6 @@ class Solution {
             }
         }
         return dp[m][n];
-    }
-
-    private static int solve1(String word1, String word2, int m, int n, int i, int j) {
-        if (i > word1.length() - 1) {
-            return word2.length() - j;
-        }
-        if (j > word2.length() - 1) {
-            return word1.length() - i;
-        }
-
-        if (word1.charAt(i) == word2.charAt(j)) {
-            return solve1(word1, word2, m, n, i + 1, j + 1);
-        } else {
-            int insert = 1 + solve1(word1, word2, m, n, i, j + 1);
-            int delete = 1 + solve1(word1, word2, m, n, i + 1, j);
-            int replace = 1 + solve1(word1, word2, m, n, i + 1, j + 1);
-            return Math.min(insert, Math.min(delete, replace));
-        }
-    }
-
-    private static int solve2(String word1, String word2, int m, int n, int i, int j, int[][] dp) {
-        if (i > word1.length() - 1) {
-            return word2.length() - j;
-        }
-        if (j > word2.length() - 1) {
-            return word1.length() - i;
-        }
-        if (dp[i][j] != 0) {
-            return dp[i][j];
-        }
-
-        if (word1.charAt(i) == word2.charAt(j)) {
-            return dp[i][j] = solve2(word1, word2, m, n, i + 1, j + 1, dp);
-        } else {
-            int insert = 1 + solve2(word1, word2, m, n, i, j + 1, dp);
-            int delete = 1 + solve2(word1, word2, m, n, i + 1, j, dp);
-            int replace = 1 + solve2(word1, word2, m, n, i + 1, j + 1, dp);
-            return dp[i][j] = Math.min(insert, Math.min(delete, replace));
-        }
     }
 
     public static void main(String[] args) {

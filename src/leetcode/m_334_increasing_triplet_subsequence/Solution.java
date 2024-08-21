@@ -11,16 +11,18 @@ class Solution {
         Arrays.fill(sequence, Integer.MAX_VALUE);
 
         for (int num : nums) {
-            int i = 0;
-            while (sequence[i] < num) {
-                i++;
+            int index = 0;
+            while (sequence[index] < num) {
+                index++;
             }
-            sequence[i] = num;
+            sequence[index] = num;
 
-            if (i == k - 1) {
+            if (index == k - 1) {
+                System.out.println(Arrays.toString(sequence));
                 return true;
             }
         }
+
         return false;
     }
 

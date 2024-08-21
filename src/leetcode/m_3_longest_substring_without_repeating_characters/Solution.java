@@ -10,18 +10,22 @@ class Solution {
         if (s.isEmpty() || s.length() == 1) {
             return s.length();
         }
-        Set<Character> charSet = new HashSet<>();
+
+        Set<Character> uniqueCharacters = new HashSet<>();
         int maxLength = 0;
         int leftIndex = 0, rightIndex = 0;
+
         while (rightIndex < s.length()) {
-            while (charSet.contains(s.charAt(rightIndex))) {
-                charSet.remove(s.charAt(leftIndex));
+            if (uniqueCharacters.contains(s.charAt(rightIndex))) {
+                uniqueCharacters.remove(s.charAt(leftIndex));
                 leftIndex++;
+            } else {
+                uniqueCharacters.add(s.charAt(rightIndex));
+                maxLength = Math.max(maxLength, rightIndex - leftIndex + 1);
+                rightIndex++;
             }
-            charSet.add(s.charAt(rightIndex));
-            maxLength = Math.max(maxLength, rightIndex - leftIndex + 1);
-            rightIndex++;
         }
+
         return maxLength;
     }
 

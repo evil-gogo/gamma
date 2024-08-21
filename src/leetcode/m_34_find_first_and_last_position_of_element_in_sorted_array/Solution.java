@@ -6,35 +6,47 @@ import java.util.Arrays;
 
 class Solution {
     public static int[] searchRange(int[] nums, int target) {
-        int[] res = new int[2];
-        Arrays.fill(res, -1);
+        int[] res = {-1, -1};
 
-        if (nums.length == 1) {
+        if (nums.length == 0) {
             return res;
         }
-        int leftIndex = 0, rightIndex = nums.length - 1, index = 0;
 
-        while (leftIndex < rightIndex) {
+        int leftIndex = findPosition(nums, target, true);
+
+        if (leftIndex == -1) {
+            return res;
+        }
+
+        int rightIndex = findPosition(nums, target, false);
+
+        res[0] = leftIndex;
+        res[1] = rightIndex;
+        return res;
+    }
+
+    private static int findPosition(int[] nums, int target, boolean findFirst) {
+        int leftIndex = 0, rightIndex = nums.length - 1;
+        int result = -1;
+
+        while (leftIndex <= rightIndex) {
             int midIndex = leftIndex + (rightIndex - leftIndex) / 2;
-            if (nums[midIndex] == target) {
 
-                if (midIndex > 0 && nums[midIndex - 1] == target) {
-                    res[index++] = midIndex - 1;
-                    res[index] = midIndex;
-                    return res;
-                } else if (midIndex < nums.length - 1 && nums[midIndex + 1] == target) {
-                    res[index++] = midIndex;
-                    res[index] = midIndex + 1;
-                }
-            } else {
-                if (nums[midIndex] < target) {
-                    leftIndex = midIndex + 1;
-                } else {
+            if (nums[midIndex] == target) {
+                result = midIndex;
+                if (findFirst) {
                     rightIndex = midIndex - 1;
+                } else {
+                    leftIndex = midIndex + 1;
                 }
+            } else if (nums[midIndex] < target) {
+                leftIndex = midIndex + 1;
+            } else {
+                rightIndex = midIndex - 1;
             }
         }
-        return res;
+
+        return result;
     }
 
     public static void main(String[] args) {

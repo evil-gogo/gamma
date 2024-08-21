@@ -16,7 +16,7 @@ class Solution {
         }
 
         int startIndex = 1;
-        int endIndex = n - 2;
+        int endIndex = n - 1 - 1;
 
         while (startIndex <= endIndex) {
             int midIndex = startIndex + (endIndex - startIndex) / 2;

@@ -31,7 +31,7 @@ class Solution {
 
         ListNode evenPtrHead = evenPtr;
 
-        while (evenPtr != null && evenPtr.next != null && oddPtr != null  && oddPtr.next != null) {
+        while (oddPtr != null  && oddPtr.next != null && evenPtr != null && evenPtr.next != null) {
             ListNode evenPtrNext = evenPtr.next;
 
             oddPtr.next = evenPtrNext;

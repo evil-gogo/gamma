@@ -6,23 +6,22 @@ class Solution {
     public static boolean searchMatrix(int[][] matrix, int target) {
         int rowsCount = matrix.length, columnsCount = matrix[0].length;
         int startIndex = 0, endIndex = rowsCount * columnsCount - 1;
-        int x, y;
-        while (startIndex < endIndex) {
+
+        while (startIndex <= endIndex) {
             int midIndex = (startIndex + endIndex) / 2;
+            int x = midIndex / columnsCount;
+            int y = midIndex % columnsCount;
 
-            x = midIndex / columnsCount;
-            y = midIndex % columnsCount;
-
-            if (matrix[x][y] >= target) {
-                endIndex = midIndex;
-            } else {
+            if (matrix[x][y] == target) {
+                return true;
+            } else if (matrix[x][y] < target) {
                 startIndex = midIndex + 1;
+            } else {
+                endIndex = midIndex - 1;
             }
         }
-        x = startIndex / columnsCount;
-        y = startIndex % columnsCount;
 
-        return matrix[x][y] == target;
+        return false;
     }
 
     public static void main(String[] args) {

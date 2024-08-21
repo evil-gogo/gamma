@@ -1,4 +1,4 @@
-package leetcode.m_122_best_time_to_buy_and_sell_stock_2;
+package leetcode.p_122_best_time_to_buy_and_sell_stock_2;
 
 //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
 class Solution {

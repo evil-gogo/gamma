@@ -10,36 +10,35 @@ class Solution {
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> triplets = new ArrayList<>();
         Arrays.sort(nums);
-
         int length = nums.length;
 
-        for (int first = 0; first < length - 2 && nums[first] <= 0; first++) {
-            if (first > 0 && nums[first] == nums[first - 1]) {
+        for (int firstIndex = 0; firstIndex < length - 2; firstIndex++) {
+            if (firstIndex > 0 && nums[firstIndex] == nums[firstIndex - 1]) {
                 continue;
             }
 
-            int second = first + 1;
-            int third = length - 1;
+            int secondIndex = firstIndex + 1;
+            int thirdIndex = length - 1;
 
-            while (second < third) {
-                int sum = nums[first] + nums[second] + nums[third];
+            while (secondIndex < thirdIndex) {
+                int sum = nums[firstIndex] + nums[secondIndex] + nums[thirdIndex];
 
                 if (sum < 0) {
-                    ++second;
+                    secondIndex++;
                 } else if (sum > 0) {
-                    --third;
+                    thirdIndex--;
                 } else {
-                    triplets.add(List.of(nums[first], nums[second], nums[third]));
+                    triplets.add(List.of(nums[firstIndex], nums[secondIndex], nums[thirdIndex]));
 
-                    while (second < third && nums[second] == nums[second + 1]) {
-                        ++second;
+                    while (secondIndex < thirdIndex && nums[secondIndex] == nums[secondIndex + 1]) {
+                        secondIndex++;
                     }
-                    while (second < third && nums[third] == nums[third - 1]) {
-                        --third;
+                    while (secondIndex < thirdIndex && nums[thirdIndex] == nums[thirdIndex - 1]) {
+                        thirdIndex--;
                     }
 
-                    ++second;
-                    --third;
+                    secondIndex++;
+                    thirdIndex--;
                 }
             }
         }

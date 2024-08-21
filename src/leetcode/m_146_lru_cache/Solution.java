@@ -17,16 +17,14 @@ class Pair {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (o == null || getClass() != o.getClass()) return false;
         Pair pair = (Pair) o;
-        return (this.key == pair.key && this.value == pair.value);
+        return key == pair.key && value == pair.value;
     }
 
     @Override
     public int hashCode() {
-        return this.key * 31 + this.value;
+        return Integer.hashCode(key) * 31 + Integer.hashCode(value);
     }
 
     @Override
@@ -38,40 +36,39 @@ class Pair {
 class LRUCache {
     int capacity;
     Deque<Pair> deque;
-    HashMap<Integer, Pair> hashMap;
+    HashMap<Integer, Pair> cache;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
         deque = new ArrayDeque<>();
-        hashMap = new HashMap<>();
+        cache = new HashMap<>();
     }
 
     public int get(int key) {
-        if (hashMap.containsKey(key)) {
-            Pair pair = hashMap.get(key);
-            deque.remove(pair);
-            deque.addFirst(pair);
-            return pair.value;
+        if (!cache.containsKey(key)) {
+            return -1;
         }
-        return -1;
+        Pair pair = cache.get(key);
+        deque.remove(pair);
+        deque.addFirst(pair);
+        return pair.value;
     }
 
     public void put(int key, int value) {
-        if (hashMap.containsKey(key)) {
-            Pair pair = hashMap.get(key);
+        if (cache.containsKey(key)) {
+            Pair pair = cache.get(key);
 
             deque.remove(pair);
             pair.value = value;
             deque.addFirst(pair);
         } else {
             Pair pair = new Pair(key, value);
-
             if (deque.size() == capacity) {
                 Pair removedPair = deque.removeLast();
-                hashMap.remove(removedPair.key);
+                cache.remove(removedPair.key);
             }
+            cache.put(key, pair);
             deque.addFirst(pair);
-            hashMap.put(key, pair);
         }
     }
 

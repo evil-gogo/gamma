@@ -1,5 +1,7 @@
 package leetcode.m_5_longest_palindromic_substring;
 
+//https://leetcode.com/problems/longest-palindromic-substring/description/
+
 class Solution {
     public static String longestPalindrome(String s) {
         return longestPalindrome1(s);
@@ -11,25 +13,28 @@ class Solution {
             return s;
         }
 
-        int startIndex = 0, endIndex = 0, maxLength = 1;
+        int maxStartIndex = 0, maxEndIndex = 0, maxLength = 1;
 
         boolean[][] dp = new boolean[s.length()][s.length()];
 
         for (int i = 0; i < s.length(); i++) {
             dp[i][i] = true;
-            for (int j = 0; j < i; j++) {
-                if (s.charAt(j) == s.charAt(i) && (i - j <= 2 || dp[j + 1][i - 1])) {
-                    dp[j][i] = true;
-                    if (i - j + 1 > maxLength) {
-                        maxLength = i - j + 1;
-                        startIndex = j;
-                        endIndex = i;
+        }
+
+        for (int endIndex = 0; endIndex < s.length(); endIndex++) {
+            for (int startIndex = 0; startIndex < endIndex; startIndex++) {
+                if (s.charAt(startIndex) == s.charAt(endIndex) && (endIndex - startIndex == 1 || dp[startIndex + 1][endIndex - 1])) {
+                    dp[startIndex][endIndex] = true;
+                    if (endIndex - startIndex + 1 > maxLength) {
+                        maxLength = endIndex - startIndex + 1;
+                        maxStartIndex = startIndex;
+                        maxEndIndex = endIndex;
                     }
                 }
             }
         }
 
-        return s.substring(startIndex, endIndex + 1);
+        return s.substring(maxStartIndex, maxEndIndex + 1);
     }
 
     private static String longestPalindrome2(String s) {
@@ -37,20 +42,20 @@ class Solution {
             return s;
         }
 
-        String maxStr = s.substring(0, 1);
+        String longestPalindrom = s.substring(0, 1);
 
         for (int i = 0; i < s.length() - 1; i++) {
-            String odd = expandFromCenter(s, i, i);
-            String even = expandFromCenter(s, i, i + 1);
+            String oddPalindrome = expandFromCenter(s, i, i);
+            String evenPalindrome = expandFromCenter(s, i, i + 1);
 
-            if (odd.length() > maxStr.length()) {
-                maxStr = odd;
+            if (oddPalindrome.length() > longestPalindrom.length()) {
+                longestPalindrom = oddPalindrome;
             }
-            if (even.length() > maxStr.length()) {
-                maxStr = even;
+            if (evenPalindrome.length() > longestPalindrom.length()) {
+                longestPalindrom = evenPalindrome;
             }
         }
-        return maxStr;
+        return longestPalindrom;
     }
 
     private static String expandFromCenter(String s, int leftIndex, int rightIndex) {

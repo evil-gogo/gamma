@@ -42,10 +42,6 @@ class Trie {
                 return false;
             }
             temp = temp.children[index];
-
-            if (temp != null && temp.isEndOfWord && search(word.substring(i + 1))) {
-                return true;
-            }
         }
         return temp != null && temp.isEndOfWord;
     }
@@ -53,8 +49,8 @@ class Trie {
 
 class Solution {
     public static boolean wordBreak(String s, List<String> wordDict) {
-        //return wordBreak1(s, wordDict);
-        return wordBreak2(s, wordDict);
+        return wordBreak1(s, wordDict);
+        //return wordBreak2(s, wordDict);
     }
 
     public static boolean wordBreak1(String s, List<String> wordDict) {
@@ -62,31 +58,51 @@ class Solution {
         for (String word : wordDict) {
             trie.insert(word);
         }
-        return trie.search(s);
+        Boolean[] dp = new Boolean[s.length()];
+        return solve1(s, trie, 0, dp);
+    }
+
+    private static boolean solve1(String s, Trie trie, int startIndex, Boolean[] dp) {
+        if (startIndex == s.length()) {
+            return true;
+        }
+
+        if (dp[startIndex] != null) {
+            return dp[startIndex];
+        }
+
+        for (int endIndex = startIndex + 1; endIndex <= s.length(); endIndex++) {
+            String subStr = s.substring(startIndex, endIndex);
+            if (trie.search(subStr) && solve1(s, trie, endIndex, dp)) {
+                return dp[startIndex] = true;
+            }
+        }
+
+        return dp[startIndex] = false;
     }
 
     public static boolean wordBreak2(String s, List<String> wordDict) {
         Boolean[] dp = new Boolean[s.length()];
-        return solve(s, wordDict, dp, 0);
+        return solve2(s, wordDict, 0, dp);
     }
 
-    private static boolean solve(String s, List<String> wordDict, Boolean[] dp, int currenIndex) {
-        if (currenIndex == s.length()) {
+    private static boolean solve2(String s, List<String> wordDict, int startIndex, Boolean[] dp) {
+        if (startIndex == s.length()) {
             return true;
         }
 
-        if (dp[currenIndex] != null) {
-            return dp[currenIndex];
+        if (dp[startIndex] != null) {
+            return dp[startIndex];
         }
 
-        for (int endIndex = currenIndex + 1; endIndex <= s.length(); endIndex++) {
-            String subStr = s.substring(currenIndex, endIndex);
-            if (wordDict.contains(subStr) && solve(s, wordDict, dp, endIndex)) {
-                return dp[currenIndex] = true;
+        for (int endIndex = startIndex + 1; endIndex <= s.length(); endIndex++) {
+            String subStr = s.substring(startIndex, endIndex);
+            if (wordDict.contains(subStr) && solve2(s, wordDict, endIndex, dp)) {
+                return dp[startIndex] = true;
             }
         }
 
-        return dp[currenIndex] = false;
+        return dp[startIndex] = false;
     }
 
     public static void main(String[] args) {

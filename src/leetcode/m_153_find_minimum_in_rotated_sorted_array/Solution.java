@@ -4,21 +4,22 @@ package leetcode.m_153_find_minimum_in_rotated_sorted_array;
 
 class Solution {
     public static int findMin(int[] nums) {
-        int length = nums.length;
-        if (nums[0] <= nums[length - 1]) {
-            return nums[0];
-        }
-        int leftIndex = 0, rightIndex = length - 1;
+        int leftIndex = 0, rightIndex = nums.length - 1;
 
-        while (leftIndex < rightIndex) {
+        while (leftIndex <= rightIndex) {
             int midIndex = leftIndex + (rightIndex - leftIndex) / 2;
 
-            if (nums[0] <= nums[midIndex]) {
+            if (nums[leftIndex] <= nums[rightIndex]) {
+                return nums[leftIndex];
+            }
+
+            if (nums[leftIndex] <= nums[midIndex]) {
                 leftIndex = midIndex + 1;
             } else {
                 rightIndex = midIndex;
             }
         }
+
         return nums[leftIndex];
     }
 

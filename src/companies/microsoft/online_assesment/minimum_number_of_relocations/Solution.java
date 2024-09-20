@@ -3,25 +3,25 @@ package companies.microsoft.online_assesment.minimum_number_of_relocations;
 import java.util.*;
 
 class Solution {
-    public static int findMinimumNumberOfRelocations(int[] arr) {
+    public static int findMinimumNumberOfRelocations(int[] A) {
         int numMoves = 0, prefixSum = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            prefixSum += arr[i];
-            TreeMap<Integer, List<Integer>> treeMapNegativeIndex = getNegativeIndexMap(arr, arr.length - numMoves);
+        for (int i = 0; i < A.length; i++) {
+            prefixSum += A[i];
+            TreeMap<Integer, List<Integer>> treeMapNegativeIndex = getNegativeIndexMap(A, A.length - numMoves);
             if (prefixSum < 0) {
                 for (Map.Entry<Integer, List<Integer>> entry : treeMapNegativeIndex.entrySet()) {
                     List<Integer> negativeIntegerList = (List<Integer>) entry.getValue();
                     for (int negativeIntegerIndex = 0; negativeIntegerIndex < negativeIntegerList.size(); negativeIntegerIndex++) {
                         int index = negativeIntegerList.get(negativeIntegerIndex);
                         if (index <= i) {
-                            for (int j = index; j < arr.length - 1; j++) {
-                                arr[j] = arr[j + 1];
+                            for (int j = index; j < A.length - 1; j++) {
+                                A[j] = A[j + 1];
                             }
-                            arr[arr.length - 1] = arr[index];
-                            prefixSum = prefixSum - arr[index];
+                            A[A.length - 1] = A[index];
+                            prefixSum = prefixSum - A[index];
                             numMoves += 1;
-                            if (!isSumLessThanZero(arr)) {
+                            if (!isSumLessThanZero(A)) {
                                 return numMoves;
                             }
                             i = index - 1;

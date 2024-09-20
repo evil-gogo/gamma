@@ -5,11 +5,17 @@ package companies.microsoft.interview.p_33_search_in_rotated_sorted_array;
 class Solution {
     public static int search(int[] nums, int target) {
         int leftIndex = 0, rightIndex = nums.length - 1;
-        while (leftIndex < rightIndex) {
+
+        while (leftIndex <= rightIndex) {
             int midIndex = leftIndex + (rightIndex - leftIndex) / 2;
-            if (nums[0] <= nums[midIndex]) {
-                if (nums[leftIndex] <= target && target <= nums[midIndex]) {
-                    rightIndex = midIndex;
+
+            if (nums[midIndex] == target) {
+                return midIndex;
+            }
+
+            if (nums[leftIndex] <= nums[midIndex]) {
+                if (nums[leftIndex] <= target && target < nums[midIndex]) {
+                    rightIndex = midIndex - 1;
                 } else {
                     leftIndex = midIndex + 1;
                 }
@@ -17,11 +23,12 @@ class Solution {
                 if (nums[midIndex] < target && target <= nums[rightIndex]) {
                     leftIndex = midIndex + 1;
                 } else {
-                    rightIndex = midIndex;
+                    rightIndex = midIndex - 1;
                 }
             }
         }
-        return nums[leftIndex] == target ? leftIndex : -1;
+
+        return -1;
     }
 
     public static void main(String[] args) {

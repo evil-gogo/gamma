@@ -1,6 +1,6 @@
 package leetcode.medium.m_83_remove_duplicates_from_sorted_list;
 
-//83. Remove Duplicates from Sorted List
+//https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
 
 class ListNode {
     int val;

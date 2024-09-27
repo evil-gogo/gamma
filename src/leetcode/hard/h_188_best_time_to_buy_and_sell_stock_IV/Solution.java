@@ -1,10 +1,9 @@
-package leetcode.hard.h_123_best_time_to_buy_and_sell_stock_III;
+package leetcode.hard.h_188_best_time_to_buy_and_sell_stock_IV;
 
-//https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/
 
 class Solution {
-    public static int maxProfit(int[] prices) {
-        int k = 2;
+    public static int maxProfit(int k, int[] prices) {
         //return maxProfit1(k, prices);
         return maxProfit2(k, prices);
     }
@@ -72,8 +71,9 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        int[] prices = {3, 3, 5, 0, 0, 3, 1, 4};
+        int k = 2;
+        int[] prices = {3, 2, 6, 5, 0, 3};
         //int[] prices = {7, 8, 9};
-        System.out.println(maxProfit(prices));
+        System.out.println(maxProfit(k, prices));
     }
 }

@@ -1,4 +1,4 @@
-package leetcode.p_353_design_snake_game;
+package leetcode.medium.m_353_design_snake_game;
 
 //https://leetcode.com/problems/design-snake-game/description/
 

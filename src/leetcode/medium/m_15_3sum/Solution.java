@@ -11,9 +11,10 @@ class Solution {
         List<List<Integer>> triplets = new ArrayList<>();
         Arrays.sort(nums);
         int length = nums.length;
-
-        for (int firstIndex = 0; firstIndex < length - 2; firstIndex++) {
+        int firstIndex = 0;
+        while (firstIndex < length - 2) {
             if (firstIndex > 0 && nums[firstIndex] == nums[firstIndex - 1]) {
+                firstIndex++;
                 continue;
             }
 
@@ -40,7 +41,9 @@ class Solution {
                     secondIndex++;
                     thirdIndex--;
                 }
+
             }
+            firstIndex++;
         }
         return triplets;
     }

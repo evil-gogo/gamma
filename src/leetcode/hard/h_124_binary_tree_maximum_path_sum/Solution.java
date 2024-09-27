@@ -2,44 +2,49 @@ package leetcode.hard.h_124_binary_tree_maximum_path_sum;
 
 //https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
+import graph.tree.Tree;
+import graph.tree.TreeNode;
 
 class MaxSum {
-    int maxSum = Integer.MIN_VALUE;
+    int maxSum;
 }
 
 class Solution {
-    public int maxPathSum(TreeNode root) {
-        MaxSum maxSum = new MaxSum();
-        calculateMaxPathFromNode(root, maxSum);
+    static MaxSum maxSum = new MaxSum();
+
+    public static int maxPathSum(TreeNode root) {
+        maxSum.maxSum = Integer.MIN_VALUE;
+        calculateMaxPathFromNode(root);
         return maxSum.maxSum;
     }
 
-    private int calculateMaxPathFromNode(TreeNode node, MaxSum maxSum) {
+    private static int calculateMaxPathFromNode(TreeNode node) {
         if (node == null) {
             return 0;
         }
-        int leftMaxSum = Math.max(0,  calculateMaxPathFromNode(node.left, maxSum));
-        int rightMaxSum = Math.max(0, calculateMaxPathFromNode(node.right, maxSum));
-        maxSum.maxSum = Math.max(maxSum.maxSum, node.val + leftMaxSum + rightMaxSum);
-        return node.val + Math.max(leftMaxSum, rightMaxSum);
+        int left = calculateMaxPathFromNode(node.left);
+        int right = calculateMaxPathFromNode(node.right);
+
+        int case1 = left + right + node.val;
+
+        int case2 = Math.max(left, right) + node.val;
+        int case3 = node.val;
+
+        maxSum.maxSum = Math.max(maxSum.maxSum, Math.max(Math.max(case1, case2), case3));
+
+        return Math.max(case2, case3);
+    }
+
+    public static void main(String[] args) {
+        int[] input = {-10, 9, 20, 0, 0, 15, 7};
+
+        Tree bst = new Tree();
+
+        for (int i = 0; i < input.length; i++) {
+            bst.root = bst.insertInBST(bst.root, input[i]);
+        }
+
+        System.out.println(maxPathSum(bst.root));
     }
 }
 

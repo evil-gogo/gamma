@@ -18,9 +18,8 @@ class Solution {
                             board[i][j] = number;
                             if (solve(board)) {
                                 return true;
-                            } else {
-                                board[i][j] = '.';
                             }
+                            board[i][j] = '.';
                         }
                     }
                     return false;

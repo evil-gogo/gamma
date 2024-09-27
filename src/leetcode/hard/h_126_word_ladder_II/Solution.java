@@ -7,56 +7,92 @@ import java.util.*;
 class Solution {
     public static List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         List<List<String>> result = new ArrayList<>();
-        HashSet<String> wordSet = new HashSet<>(wordList);
 
+        Set<String> wordSet = new HashSet<>(wordList);
         if (!wordSet.contains(endWord)) {
             return result;
         }
 
+        Map<String, Set<String>> reverseAdjacencyMap = new HashMap<>();
         Queue<String> queue = new LinkedList<>();
-        queue.add(beginWord);
-        int minLadderLength = Integer.MAX_VALUE;
-        int ladderLength = 0;
 
-        while (!queue.isEmpty()) {
-            ladderLength = 1;
-            ladderLength++;
-            int queueSize = queue.size();
-            for (int i = 0; i < queueSize; i++) {
+        queue.offer(beginWord);
+        wordSet.remove(beginWord);
+
+        boolean foundEndWord = false;
+
+        while (!queue.isEmpty() && !foundEndWord) {
+            int levelSize = queue.size();
+            Set<String> currentLevelWords = new HashSet<>();
+
+            for (int i = 0; i < levelSize; i++) {
                 String word = queue.poll();
-                System.out.println(word);
-                assert word != null;
-                char[] chars = word.toCharArray();
-                for (int j = 0; j < chars.length; j++) {
+                char[] wordChars = word.toCharArray();
+
+                for (int j = 0; j < wordChars.length; j++) {
+                    char originalChar = wordChars[j];
+
                     for (char replacedChar = 'a'; replacedChar <= 'z'; replacedChar++) {
-                        char temp = chars[j];
-                        chars[j] = replacedChar;
-                        String newWord = new String(chars);
-                        if (newWord.equals(word)) {
+                        if (replacedChar == originalChar) {
                             continue;
                         }
-                        if (newWord.equals(endWord)) {
-                            ladderLength = ladderLength + 1;
-                            if (ladderLength < minLadderLength) {
-                                minLadderLength = ladderLength;
+
+                        wordChars[j] = replacedChar;
+                        String newWord = new String(wordChars);
+
+                        if (wordSet.contains(newWord)) {
+                            if (!reverseAdjacencyMap.containsKey(newWord)) {
+                                reverseAdjacencyMap.put(newWord, new HashSet<>());
+                            }
+                            reverseAdjacencyMap.get(newWord).add(word);
+                            currentLevelWords.add(newWord);
+
+                            if (newWord.equals(endWord)) {
+                                foundEndWord = true;
                             }
                         }
-                        if (wordSet.contains(newWord)) {
-                            queue.add(newWord);
-                            wordSet.remove(newWord);
-                        }
-                        chars[j] = temp;
                     }
+                    wordChars[j] = originalChar;
                 }
             }
 
+            queue.addAll(currentLevelWords);
+            wordSet.removeAll(currentLevelWords);
         }
+
+        if (!foundEndWord) {
+            return result;
+        }
+
+        List<String> path = new ArrayList<>();
+        path.add(endWord);
+        backtrack(endWord, beginWord, reverseAdjacencyMap, result, path);
         return result;
+    }
+
+    private static void backtrack(String currentWord, String beginWord, Map<String, Set<String>> reverseAdjacencyMap,
+                                  List<List<String>> result, List<String> path) {
+        if (currentWord.equals(beginWord)) {
+            List<String> validPath = new ArrayList<>(path);
+            Collections.reverse(validPath);
+            result.add(validPath);
+            return;
+        }
+
+        if (!reverseAdjacencyMap.containsKey(currentWord)) {
+            return;
+        }
+
+        for (String predecessor : reverseAdjacencyMap.get(currentWord)) {
+            path.add(predecessor);
+            backtrack(predecessor, beginWord, reverseAdjacencyMap, result, path);
+            path.remove(path.size() - 1);
+        }
     }
 
     public static void main(String[] args) {
         String beginWord = "hit", endWord = "cog";
         String[] wordList = {"hot", "dot", "dog", "lot", "log", "cog"};
-        System.out.println(findLadders(beginWord, endWord, Arrays.asList(wordList)));
+        System.out.println(findLadders(beginWord, endWord, List.of(wordList)));
     }
 }

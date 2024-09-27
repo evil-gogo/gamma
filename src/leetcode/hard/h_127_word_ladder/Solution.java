@@ -1,6 +1,7 @@
 package leetcode.hard.h_127_word_ladder;
 
 //https://leetcode.com/problems/word-ladder/description/
+//https://leetcode.com/problems/word-ladder/solutions/5676871/easiest-explanation-with-images-commented-code/
 
 import java.util.*;
 
@@ -15,32 +16,37 @@ class Solution {
 
         Queue<String> queue = new LinkedList<>();
         queue.add(beginWord);
-        int ladderLength = 0;
+        int level = 0;
 
         while (!queue.isEmpty()) {
-            ladderLength++;
-            int queueSize = queue.size();
-            for (int i = 0; i < queueSize; i++) {
+            level++;
+            int levelSize = queue.size();
+
+            System.out.println("Queue " + queue);
+            for (int i = 0; i < levelSize; i++) {
                 String word = queue.poll();
-                System.out.println(word);
+
                 assert word != null;
-                char[] chars = word.toCharArray();
-                for (int j = 0; j < chars.length; j++) {
+                char[] wordChars = word.toCharArray();
+                for (int j = 0; j < wordChars.length; j++) {
                     for (char replacedChar = 'a'; replacedChar <= 'z'; replacedChar++) {
-                        char temp = chars[j];
-                        chars[j] = replacedChar;
-                        String newWord = new String(chars);
-                        if (newWord.equals(word)) {
+                        char originalChar = wordChars[j];
+
+                        if (replacedChar == originalChar) {
                             continue;
                         }
+
+                        wordChars[j] = replacedChar;
+                        String newWord = new String(wordChars);
+
                         if (newWord.equals(endWord)) {
-                            return ladderLength + 1;
+                            return level + 1;
                         }
                         if (wordSet.contains(newWord)) {
                             queue.add(newWord);
                             wordSet.remove(newWord);
                         }
-                        chars[j] = temp;
+                        wordChars[j] = originalChar;
                     }
                 }
             }
@@ -50,10 +56,9 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        //String beginWord = "hit", endWord = "cog";
-        //String[] wordList = {"hot", "dot", "dog", "lot", "log", "cog"};
-        String beginWord = "hot", endWord = "dog";
-        String[] wordList = {"hot","dog"};
+        String beginWord = "hit", endWord = "cog";
+        String[] wordList = {"hot", "dot", "dog", "lot", "log", "cog"};
+
         System.out.println(ladderLength(beginWord, endWord, List.of(wordList)));
     }
 }

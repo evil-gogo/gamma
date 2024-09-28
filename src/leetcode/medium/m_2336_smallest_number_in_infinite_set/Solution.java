@@ -1,5 +1,7 @@
 package leetcode.medium.m_2336_smallest_number_in_infinite_set;
 
+//https://leetcode.com/problems/smallest-number-in-infinite-set/description/
+
 import java.util.*;
 
 class SmallestInfiniteSet {

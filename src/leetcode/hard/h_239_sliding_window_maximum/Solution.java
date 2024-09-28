@@ -21,7 +21,7 @@ class Solution {
             }
             System.out.println("SECOND " + deque);
 
-            deque.offer(i);
+            deque.offerLast(i);
             System.out.println("THIRD " + deque);
 
 

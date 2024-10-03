@@ -1,4 +1,4 @@
-package leetcode.medium.m_1446_consecutive_characters;
+package leetcode.easy.e_1446_consecutive_characters;
 
 //https://leetcode.com/problems/consecutive-characters/description/
 

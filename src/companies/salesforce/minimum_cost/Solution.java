@@ -1,4 +1,4 @@
-package companies.salesforce.p_minimum_cost;
+package companies.salesforce.minimum_cost;
 
 import java.util.List;
 

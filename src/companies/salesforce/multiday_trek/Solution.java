@@ -1,4 +1,4 @@
-package companies.salesforce.p_multiday_trek;
+package companies.salesforce.multiday_trek;
 
 import java.util.*;
 

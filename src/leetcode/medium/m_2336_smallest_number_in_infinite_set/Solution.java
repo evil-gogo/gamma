@@ -5,48 +5,27 @@ package leetcode.medium.m_2336_smallest_number_in_infinite_set;
 import java.util.*;
 
 class SmallestInfiniteSet {
-    private TreeSet<Integer> poppedNumbersSet;
+    private Set<Integer> poppedNumbersSet;
     private int minNumberInInfiniteSequence;
 
     public SmallestInfiniteSet() {
-        poppedNumbersSet = new TreeSet<>();
+        poppedNumbersSet = new HashSet<>();
         minNumberInInfiniteSequence = 1;
     }
 
     public int popSmallest() {
-        int smallestNumber;
-        if (poppedNumbersSet.isEmpty()) {
-            smallestNumber = minNumberInInfiniteSequence;
-            poppedNumbersSet.add(smallestNumber);
+        while (poppedNumbersSet.contains(minNumberInInfiniteSequence)) {
             minNumberInInfiniteSequence++;
-            return smallestNumber;
-        } else {
-            smallestNumber = poppedNumbersSet.first();
-            if (smallestNumber > 1) {
-                poppedNumbersSet.add(1);
-                minNumberInInfiniteSequence = 1;
-                return 1;
-            } else {
-                Iterator<Integer> iterator = poppedNumbersSet.iterator();
-                int prevNumber = smallestNumber, nextNumber;
-                while (iterator.hasNext()) {
-                    nextNumber = iterator.next();
-                    if (nextNumber - prevNumber > 1) {
-                        break;
-                    }
-                    prevNumber = nextNumber;
-                }
-                poppedNumbersSet.add(prevNumber + 1);
-                return prevNumber + 1;
-            }
         }
+        poppedNumbersSet.add(minNumberInInfiniteSequence);
+        return minNumberInInfiniteSequence++;
     }
 
     public void addBack(int num) {
         if (poppedNumbersSet.contains(num)) {
             poppedNumbersSet.remove(num);
-            if (poppedNumbersSet.isEmpty()) {
-                minNumberInInfiniteSequence = 1;
+            if (minNumberInInfiniteSequence > num) {
+                minNumberInInfiniteSequence = num;
             }
         }
     }

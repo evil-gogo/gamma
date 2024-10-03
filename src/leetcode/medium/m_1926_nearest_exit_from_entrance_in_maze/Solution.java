@@ -60,8 +60,8 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        char[][] maze = {{'+', '+', '.', '+' }, {'.', '.', '.', '+' }, {'+', '+', '+', '.' }};
-        int[] entrance = {1, 0};
+        char[][] maze = {{'+', '+', '.', '+'}, {'.', '.', '.', '+'}, {'+', '+', '+', '.'}};
+        int[] entrance = {1, 2};
         System.out.println(nearestExit(maze, entrance));
     }
 }

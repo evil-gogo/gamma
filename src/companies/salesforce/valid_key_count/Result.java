@@ -1,4 +1,4 @@
-package companies.salesforce.p_valid_key_count;
+package companies.salesforce.valid_key_count;
 
 import java.util.ArrayList;
 import java.util.List;

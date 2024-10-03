@@ -1,4 +1,4 @@
-package companies.salesforce.p_min_machines;
+package companies.salesforce.min_machines;
 
 import java.util.Arrays;
 import java.util.Comparator;

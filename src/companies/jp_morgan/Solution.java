@@ -13,8 +13,6 @@ The sorted list would be - {-10, -1, 3, 4, 5, 6, 7, 9, 12, 56}
 Return the head of this new lists
 */
 
-// -1, -10, 5
-
 // MinHeap/PQ - size (No.Of List)
 
 // minElement O(1)

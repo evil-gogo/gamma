@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
  * and prints them to the standard output.
  */
 
-public class Solution {
+class Solution {
     /**
      * Iterate through each line of input.
      */

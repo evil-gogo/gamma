@@ -1,4 +1,4 @@
-package companies.oracle;
+package companies.oracle.deep_copy_list;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 class DoublyListNode {
-    DoublyListNode random;
+    List<DoublyListNode> random;
     DoublyListNode next;
     int data;
 
@@ -16,13 +16,19 @@ class DoublyListNode {
 
     DoublyListNode(int data) {
         this.data = data;
+        this.random = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return this.data + "";
     }
 }
 
 class MyDoublyList {
     public DoublyListNode head;
 
-    MyDoublyList(DoublyListNode node) {
+    public MyDoublyList(DoublyListNode node) {
         this.head = node;
     }
 
@@ -37,12 +43,14 @@ class MyDoublyList {
 
         DoublyListNode temp = head;
         while (temp != null) {
-            DoublyListNode prevNode = temp.random;
-            if (mapRandomToSourceNodes.containsKey(prevNode)) {
-                mapRandomToSourceNodes.get(prevNode).add(temp);
-            } else {
-                mapRandomToSourceNodes.put(prevNode, new ArrayList<>());
-                mapRandomToSourceNodes.get(prevNode).add(temp);
+            List<DoublyListNode> randomNodeList = temp.random;
+            for (DoublyListNode randomNode : randomNodeList) {
+                if (mapRandomToSourceNodes.containsKey(randomNode)) {
+                    mapRandomToSourceNodes.get(randomNode).add(temp);
+                } else {
+                    mapRandomToSourceNodes.put(randomNode, new ArrayList<>());
+                    mapRandomToSourceNodes.get(randomNode).add(temp);
+                }
             }
             temp = temp.next;
         }
@@ -68,7 +76,7 @@ class MyDoublyList {
                 for (DoublyListNode sourceNode : randomNodesList) {
                     if (sourceNode != null) {
                         DoublyListNode newNodeSource = mapOldToNewNode.get(sourceNode);
-                        newNodeSource.random = tempDummyNode;
+                        newNodeSource.random.add(tempDummyNode);
                     }
                 }
             }
@@ -83,11 +91,14 @@ class MyDoublyList {
         DoublyListNode temp = head;
         while (temp != null) {
             if (temp.random != null) {
-                System.out.print(temp.data + " " + temp.random.data + " | ");
+                System.out.print(temp.data + " " + temp.random);
             } else {
-                System.out.print(temp.data + " | ");
+                System.out.print(temp.data);
             }
             temp = temp.next;
+            if (temp != null) {
+                System.out.print(", ");
+            }
         }
         System.out.println();
     }
@@ -100,9 +111,11 @@ public class Solution {
         myDoublyList.head.next = new DoublyListNode(2);
         myDoublyList.head.next.next = new DoublyListNode(3);
         myDoublyList.head.next.next.next = new DoublyListNode(4);
-        myDoublyList.head.next.next.random = myDoublyList.head.next;
+
+        myDoublyList.head.next.next.random.add(myDoublyList.head.next);
+
         myDoublyList.head.next.next.next.next = new DoublyListNode(5);
-        myDoublyList.head.random = myDoublyList.head.next.next.next;
+        myDoublyList.head.random.add(myDoublyList.head.next.next.next);
 
         MyDoublyList.printList(myDoublyList.head);
 

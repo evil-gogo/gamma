@@ -4,8 +4,8 @@ package leetcode.medium.m_1017_convert_to_base_2;
 
 class Solution {
     public static String baseNeg2(int n) {
-        //return solve1(n);
-        return solve2(n);
+        return solve1(n);
+        //return solve2(n);
     }
 
     private static String solve1(int n) {

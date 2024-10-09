@@ -104,7 +104,7 @@ class MyDoublyList {
     }
 }
 
-public class Solution {
+class Solution {
     public static void main(String[] args) {
         MyDoublyList myDoublyList = new MyDoublyList(new DoublyListNode(1));
 

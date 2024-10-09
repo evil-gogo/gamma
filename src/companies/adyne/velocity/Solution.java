@@ -3,8 +3,7 @@ package companies.adyne.velocity;
 import java.util.*;
 import java.time.*;
 
-public class Solution {
-
+class Solution {
     static class Payment {
         private final String paymentId;
         private final Instant timestamp;

@@ -2,7 +2,7 @@ package companies.nielsen.most_common_difference;
 
 import java.util.*;
 
-public class Solution {
+class Solution {
     public static void main(String[] args) {
         int[] rangesInput = {0, 100};
         int N = 10;

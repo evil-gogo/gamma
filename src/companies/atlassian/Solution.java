@@ -82,7 +82,7 @@ I: number of instructions given
 
 import java.util.*;
 
-public class Solution {
+class Solution {
     public static void main(String[] argv) {
         String[][] instructions_1 = {
                 {"jasmin", "tulip"},

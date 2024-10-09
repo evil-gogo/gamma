@@ -2,7 +2,7 @@ package companies.microsoft.online_assesment.minimum_number_of_relocations;
 
 import java.util.PriorityQueue;
 
-public class Solution_ChatGPT {
+class Solution_ChatGPT {
     public static int findMinimumNumberOfRelocations(int[] A) {
         PriorityQueue<Integer> maxHeapNegativeExpenses = new PriorityQueue<>((a, b) -> a - b);
         int minimumRelocations = 0;

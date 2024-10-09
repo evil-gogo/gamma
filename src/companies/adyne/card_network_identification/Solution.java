@@ -3,6 +3,12 @@ package companies.adyne.card_network_identification;
 import java.io.*;
 import java.util.*;
 
+//4111111111111111
+//400000000000,499999999999,visa
+//500000000000,599999999999,mc
+
+//visa
+
 /**
  * An entity to hold card range details. A card range is a pair of 12 digit numbers that
  * marks the boundaries of the range which is maped to the card network. The range boundaries are inclusive.
@@ -43,7 +49,6 @@ final class CardNetworkCache {
                 return cardRange.cardNetwork;
             }
         }
-
         return null;
     }
 }
@@ -53,42 +58,14 @@ final class CardNetworkCache {
  * No changes required in the Solution class
  **/
 
-public class Solution {
+class Solution {
     public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        List<CardRange> ranges = new ArrayList<>();
+        ranges.add(new CardRange("400000000000","499999999999", "visa"));
+        ranges.add(new CardRange("500000000000","599999999999", "mc"));
 
-        try (final Scanner scanner = new Scanner(System.in)) {
-            List<CardRange> ranges = new ArrayList<>();
+        CardNetworkCache cache = new CardNetworkCache(ranges);
 
-            String cardNumber = scanner.next();
-            scanner.nextLine();
-
-            scanner.useDelimiter("[,\n]");
-
-            while (scanner.hasNext()) {
-                String start = scanner.next();
-                String end = scanner.next();
-                String cardNetwork = scanner.next();
-                ranges.add(new CardRange(start, end, cardNetwork));
-                if (scanner.hasNextLine()) {
-                    scanner.nextLine();
-                }
-            }
-
-            CardNetworkCache cache = new CardNetworkCache(ranges);
-            if (cache != null) {
-                bufferedWriter.write(String.valueOf(cache.get(cardNumber)));
-            }
-        }
-
-        bufferedWriter.newLine();
-        bufferedWriter.close();
+        System.out.println(cache.get("4111111111111111"));
     }
 }
-
-
-//4111111111111111
-//400000000000,499999999999,visa
-//500000000000,599999999999,mc
-
-//visa

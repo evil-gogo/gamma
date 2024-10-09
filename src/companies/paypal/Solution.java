@@ -2,7 +2,7 @@ package companies.paypal;
 
 import java.util.*;
 
-public class Solution {
+class Solution {
     public static List<String> search(char[][] grid, String search) {
         List<String> result = new LinkedList<>();
 

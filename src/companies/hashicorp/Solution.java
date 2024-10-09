@@ -56,7 +56,7 @@ class InMemoryDatabase {
     }
 }
 
-public class Solution {
+class Solution {
     public static void main(String[] args) {
         InMemoryDatabase db = new InMemoryDatabase();
 

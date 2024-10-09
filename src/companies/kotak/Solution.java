@@ -48,7 +48,7 @@ class Player {
     }
 }
 
-public class Solution {
+class Solution {
     int N;
     int[][] grid;
     Player[] players;

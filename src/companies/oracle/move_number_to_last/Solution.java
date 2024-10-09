@@ -1,8 +1,8 @@
-package companies.oracle.move_3s_to_last;
+package companies.oracle.move_number_to_last;
 
 import java.util.Arrays;
 
-public class Solution {
+class Solution {
     public static int move_to_last(int[] arr, int number) {
         int countOfNumber = 0;
         for (int i = 0; i < arr.length; i++) {

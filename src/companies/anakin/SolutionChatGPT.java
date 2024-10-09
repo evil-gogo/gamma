@@ -3,7 +3,7 @@ package companies.anakin;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SolutionChatGPT {
+class SolutionChatGPT {
     private static Map<Integer, Long> factorialMemo = new HashMap<>();
 
     public static long findSimilar(String a, String b) {

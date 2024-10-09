@@ -1,6 +1,6 @@
 package companies.oracle.alternate_threads;
 
-public class Solution {
+class Solution {
     static int counter = 1;
 
     public static void main(String[] args) {

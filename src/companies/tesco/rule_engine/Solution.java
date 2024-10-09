@@ -109,7 +109,7 @@ class ShoppingCart {
     }
 }
 
-public class Solution {
+class Solution {
     public static void main(String[] args) {
         ShoppingCart shoppingCart = new ShoppingCart();
 

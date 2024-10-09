@@ -1,6 +1,6 @@
 package companies.microsoft.online_assesment.binary_string_reduce_to_zero;
 
-public class Solution {
+class Solution {
     public static int reduceBinaryStringToZero(String s) {
         if (s.indexOf('0') == -1) {
             return s.length() * 2 - 1;

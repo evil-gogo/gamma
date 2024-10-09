@@ -1,9 +1,8 @@
 package companies.docusign.minimum_deletion_sorted_array;
 
 import java.util.Arrays;
-import java.util.TreeSet;
 
-public class Solution {
+class Solution {
     public static int minimumNumberOfDeletions(int[] nums) {
         //return nums.length - lengthLIS(nums);
         return nums.length - findLCS(nums);

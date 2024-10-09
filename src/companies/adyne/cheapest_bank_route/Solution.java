@@ -63,7 +63,7 @@ class SampleBankRouteImpl implements BankRoute {
     }
 }
 
-public class Solution {
+class Solution {
     public static void main(String args[]) throws Exception {
         Scanner scanner = new Scanner(System.in);
         String destination = scanner.nextLine();

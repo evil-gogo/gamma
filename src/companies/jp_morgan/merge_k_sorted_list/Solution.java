@@ -31,7 +31,7 @@ class Node {
     }
 }
 
-public class Solution {
+class Solution {
 
     public static void main(String[] args) {
 

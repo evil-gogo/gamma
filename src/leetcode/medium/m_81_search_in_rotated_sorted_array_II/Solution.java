@@ -2,7 +2,7 @@ package leetcode.medium.m_81_search_in_rotated_sorted_array_II;
 
 //https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 
-public class Solution {
+class Solution {
     public static boolean search(int[] nums, int target) {
         int leftIndex = 0, rightIndex = nums.length - 1;
 
